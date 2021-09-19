@@ -12,3 +12,6 @@ out/
 .settings
 .classpath
 .factorypath
+
+# since it's build with nuxt, we should not add them to git
+src/main/resources/public

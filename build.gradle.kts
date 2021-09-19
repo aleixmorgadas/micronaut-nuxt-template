@@ -38,7 +38,6 @@ dependencies {
 
 }
 
-
 application {
     mainClass.set("dev.aleixmorgadas.ApplicationKt")
 }
@@ -46,7 +45,35 @@ java {
     sourceCompatibility = JavaVersion.toVersion("11")
 }
 
+tasks.register("copyFrontend") {
+    group = "build"
+    description = "Copy frontend into server"
+    dependsOn(":frontend:build")
+    doFirst {
+        copy {
+            from("./frontend/dist/.")
+            into("${buildDir}/resources/main/public/")
+        }
+    }
+}
+
+tasks.register("copyFrontendDev") {
+    group = "build"
+    description = "Copy frontend into server"
+    dependsOn(":frontend:build")
+    doFirst {
+        copy {
+            from("./frontend/dist/.")
+            into("src/main/resources/public/")
+        }
+    }
+}
+
 tasks {
+    assemble {
+        dependsOn("copyFrontend")
+    }
+
     compileKotlin {
         kotlinOptions {
             jvmTarget = "11"
@@ -57,6 +84,4 @@ tasks {
             jvmTarget = "11"
         }
     }
-
-
 }
