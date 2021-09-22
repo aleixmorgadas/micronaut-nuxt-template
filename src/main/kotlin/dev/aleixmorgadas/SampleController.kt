@@ -8,6 +8,6 @@ data class SampleData(val name: String, val value: Double)
 @Controller("/sample")
 class SampleController {
 
-    @Get()
+    @Get("/data")
     fun sample() = SampleData("Micronaut + Nuxt", 10.0)
 }

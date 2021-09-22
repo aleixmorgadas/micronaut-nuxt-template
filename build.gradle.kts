@@ -51,7 +51,7 @@ tasks.register("copyFrontend") {
     dependsOn(":frontend:build")
     doFirst {
         copy {
-            from("./frontend/dist/.")
+            from("./frontend/dist/")
             into("${buildDir}/resources/main/public/")
         }
     }
@@ -63,7 +63,7 @@ tasks.register("copyFrontendDev") {
     dependsOn(":frontend:build")
     doFirst {
         copy {
-            from("./frontend/dist/.")
+            from("./frontend/dist/")
             into("src/main/resources/public/")
         }
     }

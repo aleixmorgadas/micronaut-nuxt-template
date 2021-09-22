@@ -10,20 +10,16 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import {Context} from "@nuxt/types";
-
-interface SampleData {
-  name: String;
-  value: Number;
-}
 
 export default Vue.extend({
-  async asyncData(ctx: Context): Promise<object> {
-    const response = await fetch('http://localhost:8080/sample');
+  data () {
     return {
-      sampleData: await response.json()
+      sampleData: {}
     }
+  },
+  async mounted () {
+    const response = await fetch('http://localhost:8080/sample/data')
+    this.sampleData = await response.json()
   }
 })
 </script>
-
