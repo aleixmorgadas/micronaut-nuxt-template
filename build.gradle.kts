@@ -64,7 +64,7 @@ tasks.register("copyFrontendDev") {
     doFirst {
         copy {
             from("./frontend/dist/")
-            into("src/main/resources/public/")
+            into("./src/main/resources/public/")
         }
     }
 }
